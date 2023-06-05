@@ -23,6 +23,10 @@ app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/event', require('./routes/event'));
 
+app.get('*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+});
+
 // Listen port
 app.listen(process.env.PORT, () => {
     console.log(`Escuchando por el puerto :${process.env.PORT}`);
